@@ -5,7 +5,7 @@ import streamlit.components.v1 as components
 from streamlit_bridge import initialize_store, dispatch
 
 ROOT = Path(__file__).resolve().parent
-st.set_page_config(page_title="Website Quality Checker", page_icon="◎", layout="wide")
+st.set_page_config(page_title="Patchwork", page_icon="◎", layout="wide")
 
 @st.cache_resource
 def backend():
