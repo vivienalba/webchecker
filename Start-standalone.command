@@ -6,4 +6,4 @@ if [ ! -d .venv ]; then
 fi
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m streamlit run app.py --server.port 8503 --server.headless false
+python server.py --port 8503 --open-browser

@@ -2,6 +2,12 @@
 
 A Python website review workspace with a custom geometric interface for reviewing public websites before launch and after updates. No AI subscription or API key is required.
 
+## Updated Streamlit entry point
+
+`app.py` now displays the same branded web interface as `server.py`. Keep your existing Streamlit entry point set to `app.py` and upload the complete project contents, including `web/`, `sitecheck/`, and `streamlit_bridge.py`. Do not select `server.py` as a Streamlit entry point.
+
+See **UPLOAD-STEPS.md** for the exact local check and GitHub upload steps. The browser transport has been checked in a protocol harness; a full launch with the real Streamlit runtime is still pending because dependency downloads were unavailable in the preparation environment. Test locally before updating the live site.
+
 ## Start on your Mac
 
 Install Python 3.11 or newer, unzip this project, then open Terminal in the project folder:
@@ -10,7 +16,7 @@ Install Python 3.11 or newer, unzip this project, then open Terminal in the proj
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python server.py
+python -m streamlit run app.py
 ```
 
 Open **http://localhost:8501** in your browser. Keep Terminal open while using it. Enter a public URL to create a real report. Existing saved scans remain available under History. The redesigned interface does not generate fabricated results or scores.
@@ -50,9 +56,7 @@ Scan history, reviews, schedules, page text and screenshots are stored in `data/
 
 The app binds to `127.0.0.1` by default. It is a private single-workspace tool, not a multi-tenant SaaS product. An optional `QUALITY_APP_PASSWORD` environment variable adds a shared password gate. It is not a substitute for a production authentication layer, rate limiting, TLS and per-user authorization. Anyone admitted to the same workspace can see its data.
 
-The project now includes two branded interfaces that share the same scanner backend. **`app.py` is the Streamlit-ready interface** and uses the same Open Sauce / Space Mono typography, indigo-periwinkle palette, cube geometry, and evidence-first visual hierarchy as the custom frontend. **`server.py`** serves the bundled HTML/CSS/JavaScript frontend in `web/` for hosts that support a custom Python server. Browser previews require Chromium; schedules require an always-on worker.
-
-For Streamlit Community Cloud, use **`app.py`** as the Main file path. The local `web/` assets are still required because the Streamlit interface loads the bundled fonts from `web/assets/`.
+The branded interface now runs through **app.py** on Streamlit, using the bundled frontend and the existing scanner APIs. The standalone server remains available through `python server.py`. The old layout is retained as `app_legacy.py`. Browser previews require Chromium; schedules require an always-on worker. No hosting deployment has been created for you.
 
 Before publishing a public service, configure authentication and infrastructure resource controls, define retention/deletion and adapt the app's data/use notice to the actual operator and hosting setup. The package adds no billing, analytics, advertising or external AI.
 
@@ -87,4 +91,4 @@ The new interface uses locally bundled Open Sauce and Space Mono fonts, the four
 
 The JavaScript bundle is included: **Node/npm are not required to run the app.** To edit and rebuild frontend source, run `npm install` followed by `npm run build` in the project folder. Fonts and library licenses are in `web/assets/` and `THIRD_PARTY.md`.
 
-On macOS, you can also launch through `Start.command`. If Terminal says it is not executable, run `chmod +x Start.command`, then double-click it. Browser installation remains a separate optional step.
+On macOS, launch the redesigned **Streamlit** version through `bash Start.command` (port 8503). Use `bash Start-standalone.command` for the standalone server. If Terminal says it is not executable, run `chmod +x Start.command`, then double-click it. Browser installation remains a separate optional step.

@@ -10,7 +10,7 @@ const number=v=>String(v).padStart(2,'0');
 const date=v=>new Date(v).toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
 const domain=url=>{try{return new URL(url).host;}catch{return url;}};
 const path=url=>{try{let u=new URL(url);return u.pathname+u.search;}catch{return url;}};
-const artifact=path=>'/api/artifact?path='+encodeURIComponent(path);
+const artifact=path=>window.WQCStreamlit?window.WQCStreamlit.artifact(path):'/api/artifact?path='+encodeURIComponent(path);
 const safeURL=url=>/^https?:\/\//i.test(url)?url:'#';
 const splits=text=>text.split('\n').map(s=>s.trim()).filter(Boolean);
 const button=(label,action,klass='',attrs='')=>`<button class="button ${klass}" data-action="${action}" ${attrs}>${label}</button>`;

@@ -2,7 +2,7 @@ from streamlit.testing.v1 import AppTest
 from sitecheck.storage import Store
 from sitecheck.demo import create_demo
 from pathlib import Path
-APP=Path(__file__).resolve().parents[1]/'app.py'
+APP=Path(__file__).resolve().parents[1]/'app_legacy.py'
 
 
 def test_all_workspace_views(tmp_path,monkeypatch):
