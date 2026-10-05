@@ -50,7 +50,9 @@ Scan history, reviews, schedules, page text and screenshots are stored in `data/
 
 The app binds to `127.0.0.1` by default. It is a private single-workspace tool, not a multi-tenant SaaS product. An optional `QUALITY_APP_PASSWORD` environment variable adds a shared password gate. It is not a substitute for a production authentication layer, rate limiting, TLS and per-user authorization. Anyone admitted to the same workspace can see its data.
 
-The new branded interface runs from **server.py**, serving the bundled frontend and the existing scanner APIs. It requires a Python web host with persistent disk. The legacy Streamlit interface remains available with `python -m streamlit run app.py` for compatibility. Browser previews require Chromium; schedules require an always-on worker. No hosting deployment has been created for you.
+The project now includes two branded interfaces that share the same scanner backend. **`app.py` is the Streamlit-ready interface** and uses the same Open Sauce / Space Mono typography, indigo-periwinkle palette, cube geometry, and evidence-first visual hierarchy as the custom frontend. **`server.py`** serves the bundled HTML/CSS/JavaScript frontend in `web/` for hosts that support a custom Python server. Browser previews require Chromium; schedules require an always-on worker.
+
+For Streamlit Community Cloud, use **`app.py`** as the Main file path. The local `web/` assets are still required because the Streamlit interface loads the bundled fonts from `web/assets/`.
 
 Before publishing a public service, configure authentication and infrastructure resource controls, define retention/deletion and adapt the app's data/use notice to the actual operator and hosting setup. The package adds no billing, analytics, advertising or external AI.
 
