@@ -18,7 +18,7 @@ from sitecheck.scanner import run_scan
 from sitecheck.storage import Store,compare_scans
 from sitecheck.reports import csv_report,pdf_report,issue_markdown,visual_diff
 
-st.set_page_config(page_title="Website Quality Checker",page_icon="◎",layout="wide",initial_sidebar_state="expanded")
+st.set_page_config(page_title="Lintel",page_icon="◎",layout="wide",initial_sidebar_state="expanded")
 st.markdown('''<style>
  .block-container{max-width:1240px;padding-top:2.5rem;padding-bottom:4rem}
  h1{letter-spacing:-.045em;font-weight:650!important;font-size:2.9rem!important;line-height:1.1!important}
